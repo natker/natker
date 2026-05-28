@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Natker | Портфолио</title>
+    <title>Natker | Веб-разработчик</title>
     <style>
         * {
             margin: 0;
@@ -19,19 +19,17 @@
         }
 
         .container {
-            max-width: 700px;
+            max-width: 750px;
             margin: 0 auto;
         }
 
-        /* Карточка — сделали компактнее */
         .card {
             background: white;
-            border-radius: 20px;
-            padding: 28px 32px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 24px;
+            padding: 32px 36px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
-        /* Аватар — меньше */
         .avatar {
             width: 100px;
             height: 100px;
@@ -52,9 +50,8 @@
             object-fit: cover;
         }
 
-        /* Заголовки — меньше */
         h1 {
-            font-size: 26px;
+            font-size: 28px;
             text-align: center;
             margin-bottom: 8px;
             color: #1a1a2e;
@@ -64,19 +61,20 @@
             text-align: center;
             font-size: 12px;
             color: #667eea;
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
         }
 
         .subtitle {
             text-align: center;
             font-size: 14px;
             color: #666;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #eee;
         }
 
-        /* Сетка для двух колонок */
         .two-columns {
             display: flex;
             gap: 40px;
@@ -86,14 +84,14 @@
 
         .column {
             flex: 1;
-            min-width: 200px;
+            min-width: 180px;
         }
 
         .column h3 {
-            font-size: 14px;
+            font-size: 15px;
             color: #333;
             margin-bottom: 12px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .feature-list {
@@ -104,32 +102,32 @@
             font-size: 13px;
             color: #555;
             margin-bottom: 8px;
-            padding-left: 18px;
-            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .feature-list li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #667eea;
-            font-weight: bold;
+            content: "✅";
+            font-size: 12px;
         }
 
         .bio {
             font-size: 14px;
             color: #444;
-            line-height: 1.5;
+            line-height: 1.6;
             margin-bottom: 24px;
-            padding-top: 16px;
+            padding: 16px 0;
             border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
         }
 
         .service-block {
-            background: #f8f9ff;
-            border-radius: 14px;
-            padding: 16px 20px;
-            margin-bottom: 24px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
+            border-radius: 16px;
+            padding: 18px 22px;
+            margin-bottom: 28px;
+            text-align: center;
         }
 
         .service-block h3 {
@@ -146,55 +144,64 @@
 
         .buttons {
             display: flex;
-            gap: 12px;
-            margin-bottom: 24px;
+            gap: 14px;
+            margin-bottom: 28px;
+            justify-content: center;
             flex-wrap: wrap;
         }
 
         .btn {
             display: inline-block;
-            padding: 10px 20px;
-            border-radius: 30px;
+            padding: 10px 24px;
+            border-radius: 40px;
             text-decoration: none;
             font-size: 13px;
             font-weight: 600;
-            transition: 0.2s;
+            transition: all 0.2s ease;
+            cursor: pointer;
         }
 
         .btn-primary {
-            background: #1a1a2e;
+            background: #667eea;
             color: white;
+            border: none;
         }
 
         .btn-primary:hover {
-            background: #667eea;
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102,126,234,0.3);
         }
 
         .btn-outline {
-            border: 1.5px solid #1a1a2e;
-            color: #1a1a2e;
+            background: transparent;
+            border: 2px solid #667eea;
+            color: #667eea;
         }
 
         .btn-outline:hover {
-            background: #1a1a2e;
+            background: #667eea;
             color: white;
+            transform: translateY(-2px);
         }
 
         .stats {
             display: flex;
-            gap: 20px;
+            gap: 30px;
             justify-content: center;
-            margin-bottom: 20px;
             flex-wrap: wrap;
         }
 
         .stat {
             text-align: center;
+            background: #f8f9fa;
+            padding: 12px 24px;
+            border-radius: 40px;
         }
 
         .stat-value {
             font-size: 13px;
-            font-weight: 600;
+            font-weight: 700;
             color: #667eea;
         }
 
@@ -210,18 +217,18 @@
             margin-top: 20px;
         }
 
-        hr {
-            margin: 20px 0;
-            border: none;
-            border-top: 1px solid #eee;
-        }
-
         @media (max-width: 550px) {
             .card {
                 padding: 20px;
             }
             .two-columns {
-                gap: 20px;
+                gap: 24px;
+            }
+            .stats {
+                gap: 12px;
+            }
+            .stat {
+                padding: 8px 16px;
             }
         }
     </style>
@@ -229,7 +236,7 @@
 <body>
     <div class="container">
         <div class="card">
-            <!-- Аватар -->
+            <!-- Аватар - можно заменить на картинку -->
             <div class="avatar">
                 👨‍💻
             </div>
@@ -238,7 +245,6 @@
             <div class="badge">САЙТЫ, КОТОРЫЕ РАБОТАЮТ НА ВАШ УСПЕХ</div>
             <div class="subtitle">Начинающий веб-разработчик</div>
 
-            <!-- Две колонки с характеристиками -->
             <div class="two-columns">
                 <div class="column">
                     <h3>Технологии</h3>
@@ -260,38 +266,34 @@
                 </div>
             </div>
 
-            <!-- Биография -->
             <div class="bio">
-                Привет! Я создаю сайты с помощью нейросетей. Здесь вы можете увидеть мои работы и связаться со мной.
+                Привет! Я создаю сайты с помощью нейросетей и вайбкодинга. Здесь вы можете увидеть мои работы и связаться со мной.
             </div>
 
-            <!-- Блок услуг -->
             <div class="service-block">
-                <h3>Создаём современные сайты и веб-сервисы</h3>
+                <h3>🚀 Создаём современные сайты и веб-сервисы</h3>
                 <p>Разрабатываем быстрые, удобные и эффективные решения для вашего бизнеса</p>
             </div>
 
-            <!-- Кнопки -->
             <div class="buttons">
-                <a href="#" class="btn btn-primary">Обсудить проект</a>
-                <a href="#" class="btn btn-outline">Смотреть работы →</a>
+                <a href="#" class="btn btn-primary">📩 Обсудить проект</a>
+                <a href="#" class="btn btn-outline">🖼️ Смотреть работы →</a>
             </div>
 
-            <!-- Статистика -->
             <div class="stats">
                 <div class="stat">
-                    <div class="stat-value">GitHub Pages</div>
-                    <div class="stat-label">Хостинг</div>
+                    <div class="stat-value">📦 GitHub Pages</div>
+                    <div class="stat-label">Бесплатный хостинг</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">Оптимизация</div>
-                    <div class="stat-label">Производительность</div>
+                    <div class="stat-value">⚡ Оптимизация</div>
+                    <div class="stat-label">Высокая производительность</div>
                 </div>
             </div>
         </div>
 
         <footer>
-            © 2026 Моё портфолио • Сделано с ❤️
+            © 2026 Моё портфолио • Сделано с ❤️ и вайбкодингом
         </footer>
     </div>
 </body>

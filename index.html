@@ -25,21 +25,21 @@
 
         .card {
             background: white;
-            border-radius: 24px;
-            padding: 32px 36px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 28px;
+            padding: 36px 40px;
+            box-shadow: 0 25px 45px rgba(0,0,0,0.15);
         }
 
         .avatar {
-            width: 100px;
-            height: 100px;
+            width: 110px;
+            height: 110px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 50%;
-            margin: 0 auto 16px;
+            margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 48px;
+            font-size: 52px;
             color: white;
             overflow: hidden;
         }
@@ -51,34 +51,34 @@
         }
 
         h1 {
-            font-size: 28px;
+            font-size: 32px;
             text-align: center;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             color: #1a1a2e;
         }
 
         .badge {
             text-align: center;
-            font-size: 12px;
+            font-size: 13px;
             color: #667eea;
             font-weight: 700;
             letter-spacing: 1.5px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .subtitle {
             text-align: center;
-            font-size: 14px;
+            font-size: 15px;
             color: #666;
-            margin-bottom: 28px;
-            padding-bottom: 16px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
             border-bottom: 1px solid #eee;
         }
 
         .two-columns {
             display: flex;
             gap: 40px;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
             flex-wrap: wrap;
         }
 
@@ -88,9 +88,9 @@
         }
 
         .column h3 {
-            font-size: 15px;
+            font-size: 16px;
             color: #333;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             font-weight: 700;
         }
 
@@ -99,9 +99,9 @@
         }
 
         .feature-list li {
-            font-size: 13px;
+            font-size: 14px;
             color: #555;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -109,53 +109,53 @@
 
         .feature-list li::before {
             content: "✅";
-            font-size: 12px;
+            font-size: 13px;
         }
 
         .bio {
-            font-size: 14px;
+            font-size: 15px;
             color: #444;
             line-height: 1.6;
-            margin-bottom: 24px;
-            padding: 16px 0;
+            margin-bottom: 28px;
+            padding: 20px 0;
             border-top: 1px solid #eee;
             border-bottom: 1px solid #eee;
         }
 
         .service-block {
             background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
-            border-radius: 16px;
-            padding: 18px 22px;
-            margin-bottom: 28px;
+            border-radius: 20px;
+            padding: 20px 24px;
+            margin-bottom: 30px;
             text-align: center;
         }
 
         .service-block h3 {
-            font-size: 16px;
-            margin-bottom: 8px;
+            font-size: 18px;
+            margin-bottom: 10px;
             color: #1a1a2e;
         }
 
         .service-block p {
-            font-size: 13px;
+            font-size: 14px;
             color: #666;
             line-height: 1.5;
         }
 
         .buttons {
             display: flex;
-            gap: 14px;
-            margin-bottom: 28px;
+            gap: 16px;
+            margin-bottom: 32px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
         .btn {
             display: inline-block;
-            padding: 10px 24px;
-            border-radius: 40px;
+            padding: 12px 28px;
+            border-radius: 50px;
             text-decoration: none;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
             transition: all 0.2s ease;
             cursor: pointer;
@@ -169,8 +169,8 @@
 
         .btn-primary:hover {
             background: #5a67d8;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102,126,234,0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102,126,234,0.3);
         }
 
         .btn-outline {
@@ -182,7 +182,7 @@
         .btn-outline:hover {
             background: #667eea;
             color: white;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
 
         .stats {
@@ -195,31 +195,44 @@
         .stat {
             text-align: center;
             background: #f8f9fa;
-            padding: 12px 24px;
-            border-radius: 40px;
+            padding: 14px 28px;
+            border-radius: 50px;
         }
 
         .stat-value {
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 700;
             color: #667eea;
         }
 
         .stat-label {
-            font-size: 11px;
+            font-size: 12px;
             color: #888;
         }
 
         footer {
             text-align: center;
-            font-size: 11px;
-            color: rgba(255,255,255,0.7);
+            font-size: 12px;
+            color: rgba(255,255,255,0.8);
             margin-top: 20px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 550px) {
             .card {
-                padding: 20px;
+                padding: 24px;
+            }
+            h1 {
+                font-size: 26px;
             }
             .two-columns {
                 gap: 24px;
@@ -228,7 +241,7 @@
                 gap: 12px;
             }
             .stat {
-                padding: 8px 16px;
+                padding: 10px 18px;
             }
         }
     </style>
@@ -236,7 +249,7 @@
 <body>
     <div class="container">
         <div class="card">
-            <!-- Аватар - можно заменить на картинку -->
+            <!-- Аватар — замените на свою картинку, если хотите -->
             <div class="avatar">
                 👨‍💻
             </div>
@@ -276,7 +289,7 @@
             </div>
 
             <div class="buttons">
-                <a href="#" class="btn btn-primary">📩 Обсудить проект</a>
+                <a href="https://t.me/https://t.me/SEO_savacrjs" class="btn btn-primary">📩 Обсудить проект</a>
                 <a href="#" class="btn btn-outline">🖼️ Смотреть работы →</a>
             </div>
 
@@ -293,7 +306,8 @@
         </div>
 
         <footer>
-            © 2026 Моё портфолио • Сделано с ❤️ и вайбкодингом
+            © 2026 Моё портфолио • Сделано с ❤️ и 
+            <a href="https://www.instagram.com/ваш_логин" target="_blank">вайбкодингом</a>
         </footer>
     </div>
 </body>

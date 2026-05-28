@@ -13,28 +13,35 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f5f5f5;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
         }
 
-        /* ========== ПЕРВЫЙ ЭКРАН — ПОЛНАЯ КАРТИНКА ========== */
-        .fullscreen {
-            height: 100vh;
+        /* ========== БАННЕР НА ВЕСЬ ЭКРАН ========== */
+        .splash {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            position: relative;
-            overflow: hidden;
+            height: 100vh;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
             cursor: pointer;
-            transition: opacity 0.5s ease;
         }
 
-        .fullscreen img {
+        .splash img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
 
-        /* Стрелка вниз — подсказка, что нужно нажать/прокрутить */
-        .scroll-hint {
+        /* Стрелка подсказки */
+        .splash-hint {
             position: absolute;
             bottom: 30px;
             left: 50%;
@@ -43,7 +50,14 @@
             font-size: 40px;
             animation: bounce 1.5s infinite;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            cursor: pointer;
+            background: rgba(0,0,0,0.4);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
         }
 
         @keyframes bounce {
@@ -51,13 +65,21 @@
             50% { transform: translateX(-50%) translateY(15px); }
         }
 
-        /* ========== ВТОРОЙ ЭКРАН — ОСНОВНАЯ ИНФОРМАЦИЯ ========== */
-        .content-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 60px 20px;
-            display: flex;
-            align-items: center;
+        /* Скрытый баннер */
+        .splash.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* ========== ОСНОВНОЙ КОНТЕНТ (появляется после исчезновения баннера) ========== */
+        .main-content {
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            padding: 40px 20px;
+        }
+
+        .main-content.visible {
+            opacity: 1;
         }
 
         .container {
@@ -246,6 +268,17 @@
             color: #888;
         }
 
+        .github-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .github-link a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
         footer {
             text-align: center;
             font-size: 12px;
@@ -284,14 +317,14 @@
 </head>
 <body>
 
-    <!-- ПЕРВЫЙ ЭКРАН: полная картинка -->
-    <div class="fullscreen" id="firstScreen">
-        <img src="design.png" alt="Natker — сайты на заказ">
-        <div class="scroll-hint" id="scrollHint">👇</div>
+    <!-- БАННЕР НА ВЕСЬ ЭКРАН -->
+    <div class="splash" id="splash">
+        <img src="design.png" alt="Natker">
+        <div class="splash-hint" id="splashHint">👇</div>
     </div>
 
-    <!-- ВТОРОЙ ЭКРАН: вся основная информация -->
-    <div class="content-section" id="contentSection">
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <div class="main-content" id="mainContent">
         <div class="container">
             <div class="card">
                 <div class="avatar">
@@ -347,6 +380,10 @@
                         <div class="stat-label">Высокая производительность</div>
                     </div>
                 </div>
+
+                <div class="github-link">
+                    📂 <a href="https://github.com/natker" target="_blank">github.com/natker</a>
+                </div>
             </div>
 
             <footer>
@@ -357,17 +394,25 @@
     </div>
 
     <script>
-        // Прокрутка ко второму экрану при клике на картинку или стрелку
-        const firstScreen = document.getElementById('firstScreen');
-        const scrollHint = document.getElementById('scrollHint');
-        const contentSection = document.getElementById('contentSection');
+        const splash = document.getElementById('splash');
+        const mainContent = document.getElementById('mainContent');
+        const splashHint = document.getElementById('splashHint');
 
-        function scrollToContent() {
-            contentSection.scrollIntoView({ behavior: 'smooth' });
+        function hideSplashAndShowContent() {
+            splash.classList.add('hidden');
+            mainContent.classList.add('visible');
         }
 
-        firstScreen.addEventListener('click', scrollToContent);
-        scrollHint.addEventListener('click', scrollToContent);
+        // По клику на баннер или стрелку — плавно исчезает баннер и появляется контент
+        splash.addEventListener('click', hideSplashAndShowContent);
+        splashHint.addEventListener('click', hideSplashAndShowContent);
+
+        // Автоматически через 3 секунды, если пользователь не нажал
+        setTimeout(() => {
+            if (!splash.classList.contains('hidden')) {
+                hideSplashAndShowContent();
+            }
+        }, 3000);
     </script>
 </body>
 </html>

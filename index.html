@@ -2,8 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Natker | Веб-разработчик</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>natker</title>
     <style>
         * {
             margin: 0;
@@ -12,407 +12,127 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #ffffff;
+            color: #111111;
+            line-height: 1.3;
             min-height: 100vh;
-        }
-
-        /* ========== БАННЕР НА ВЕСЬ ЭКРАН ========== */
-        .splash {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1000;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-            cursor: pointer;
+            padding: 24px;
         }
 
-        .splash img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* Стрелка подсказки */
-        .splash-hint {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 40px;
-            animation: bounce 1.5s infinite;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            background: rgba(0,0,0,0.4);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(5px);
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(15px); }
-        }
-
-        /* Скрытый баннер */
-        .splash.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        /* ========== ОСНОВНОЙ КОНТЕНТ (появляется после исчезновения баннера) ========== */
-        .main-content {
-            opacity: 0;
-            transition: opacity 0.6s ease;
-            padding: 40px 20px;
-        }
-
-        .main-content.visible {
-            opacity: 1;
-        }
-
+        /* Главный контейнер — максимально похож на ваш скриншот */
         .container {
-            max-width: 750px;
+            max-width: 800px;
+            width: 100%;
             margin: 0 auto;
         }
 
-        .card {
-            background: white;
-            border-radius: 28px;
-            padding: 36px 40px;
-            box-shadow: 0 25px 45px rgba(0,0,0,0.15);
-        }
-
-        .avatar {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            color: white;
-            overflow: hidden;
-        }
-
-        h1 {
-            font-size: 32px;
-            text-align: center;
-            margin-bottom: 10px;
-            color: #1a1a2e;
-        }
-
-        .badge {
-            text-align: center;
-            font-size: 13px;
-            color: #667eea;
+        /* Логотип/имя — как на картинке */
+        .logo {
+            font-size: clamp(32px, 10vw, 64px);
             font-weight: 700;
-            letter-spacing: 1.5px;
-            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+            color: #000000;
+            margin-bottom: 24px;
+            line-height: 1.1;
         }
 
-        .subtitle {
-            text-align: center;
-            font-size: 15px;
-            color: #666;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
+        /* Главный заголовок */
+        .headline {
+            font-size: clamp(22px, 6vw, 40px);
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 16px;
+            line-height: 1.2;
         }
 
-        .two-columns {
+        /* Описание */
+        .description {
+            font-size: clamp(16px, 4.5vw, 20px);
+            color: #444444;
+            margin-bottom: 40px;
+            line-height: 1.4;
+        }
+
+        /* Блок кнопок/ссылок */
+        .actions {
             display: flex;
-            gap: 40px;
-            margin-bottom: 28px;
             flex-wrap: wrap;
-        }
-
-        .column {
-            flex: 1;
-            min-width: 180px;
-        }
-
-        .column h3 {
-            font-size: 16px;
-            color: #333;
-            margin-bottom: 14px;
-            font-weight: 700;
-        }
-
-        .feature-list {
-            list-style: none;
-        }
-
-        .feature-list li {
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 10px;
-            display: flex;
             align-items: center;
-            gap: 8px;
-        }
-
-        .feature-list li::before {
-            content: "✅";
-            font-size: 13px;
-        }
-
-        .bio {
-            font-size: 15px;
-            color: #444;
-            line-height: 1.6;
-            margin-bottom: 28px;
-            padding: 20px 0;
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-        }
-
-        .service-block {
-            background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
-            border-radius: 20px;
-            padding: 20px 24px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .service-block h3 {
-            font-size: 18px;
-            margin-bottom: 10px;
-            color: #1a1a2e;
-        }
-
-        .service-block p {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.5;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 32px;
-            justify-content: center;
-            flex-wrap: wrap;
+            gap: 28px;
+            row-gap: 16px;
         }
 
         .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            border-radius: 50px;
+            font-size: 17px;
+            font-weight: 500;
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.2s ease;
             cursor: pointer;
+            transition: opacity 0.2s;
         }
 
         .btn-primary {
-            background: #667eea;
-            color: white;
+            background: none;
             border: none;
+            color: #000000;
+            padding: 0;
         }
 
-        .btn-primary:hover {
-            background: #5a67d8;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(102,126,234,0.3);
+        .btn-secondary {
+            color: #000000;
+            border-bottom: 1px solid #cccccc;
+            padding-bottom: 2px;
         }
 
-        .btn-outline {
-            background: transparent;
-            border: 2px solid #667eea;
-            color: #667eea;
+        .btn-secondary:hover {
+            border-bottom-color: #000000;
         }
 
-        .btn-outline:hover {
-            background: #667eea;
-            color: white;
-            transform: translateY(-3px);
+        .btn-primary:hover,
+        .btn-secondary:hover {
+            opacity: 0.6;
         }
 
-        .stats {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .stat {
-            text-align: center;
-            background: #f8f9fa;
-            padding: 14px 28px;
-            border-radius: 50px;
-        }
-
-        .stat-value {
-            font-size: 14px;
-            font-weight: 700;
-            color: #667eea;
-        }
-
-        .stat-label {
-            font-size: 12px;
-            color: #888;
-        }
-
-        .github-link {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-        }
-
-        .github-link a {
-            color: #667eea;
-            text-decoration: none;
-        }
-
-        footer {
-            text-align: center;
-            font-size: 12px;
-            color: rgba(255,255,255,0.8);
-            margin-top: 20px;
-        }
-
-        footer a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 550px) {
-            .card {
-                padding: 24px;
+        /* Адаптив для телефона: ссылки друг под другом, как чаще всего ломается */
+        @media (max-width: 500px) {
+            body {
+                padding: 20px;
+                align-items: flex-start;
+                padding-top: 15vh;
             }
-            h1 {
-                font-size: 26px;
+            .actions {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
             }
-            .two-columns {
-                gap: 24px;
+            .btn {
+                font-size: 18px;
             }
-            .stats {
-                gap: 12px;
+        }
+
+        /* Доп. нюанс: на очень узких экранах отступы поменьше */
+        @media (max-width: 480px) {
+            .logo {
+                margin-bottom: 20px;
             }
-            .stat {
-                padding: 10px 18px;
+            .description {
+                margin-bottom: 32px;
             }
         }
     </style>
 </head>
 <body>
-
-    <!-- БАННЕР НА ВЕСЬ ЭКРАН -->
-    <div class="splash" id="splash">
-        <img src="design.png" alt="Natker">
-        <div class="splash-hint" id="splashHint">👇</div>
-    </div>
-
-    <!-- ОСНОВНОЙ КОНТЕНТ -->
-    <div class="main-content" id="mainContent">
-        <div class="container">
-            <div class="card">
-                <div class="avatar">
-                    👨‍💻
-                </div>
-
-                <h1>Natker Разработчик</h1>
-                <div class="badge">САЙТЫ, КОТОРЫЕ РАБОТАЮТ НА ВАШ УСПЕХ</div>
-                <div class="subtitle">Начинающий веб-разработчик</div>
-
-                <div class="two-columns">
-                    <div class="column">
-                        <h3>Технологии</h3>
-                        <ul class="feature-list">
-                            <li>Современный дизайн</li>
-                            <li>Быстрая загрузка</li>
-                            <li>Адаптив на всех устройствах</li>
-                            <li>Продуманный функционал</li>
-                        </ul>
-                    </div>
-                    <div class="column">
-                        <h3>Навыки</h3>
-                        <ul class="feature-list">
-                            <li>HTML/CSS</li>
-                            <li>JavaScript</li>
-                            <li>Вайбкодинг</li>
-                            <li>GitHub Pages</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="bio">
-                    Привет! Я создаю сайты с помощью нейросетей и вайбкодинга. Здесь вы можете увидеть мои работы и связаться со мной.
-                </div>
-
-                <div class="service-block">
-                    <h3>🚀 Создаём современные сайты и веб-сервисы</h3>
-                    <p>Разрабатываем быстрые, удобные и эффективные решения для вашего бизнеса</p>
-                </div>
-
-                <div class="buttons">
-                    <a href="https://t.me/SEO_savacrjs" class="btn btn-primary">📩 Обсудить проект</a>
-                    <a href="#" class="btn btn-outline">🖼️ Смотреть работы →</a>
-                </div>
-
-                <div class="stats">
-                    <div class="stat">
-                        <div class="stat-value">📦 GitHub Pages</div>
-                        <div class="stat-label">Бесплатный хостинг</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">⚡ Оптимизация</div>
-                        <div class="stat-label">Высокая производительность</div>
-                    </div>
-                </div>
-
-                <div class="github-link">
-                    📂 <a href="https://github.com/natker" target="_blank">github.com/natker</a>
-                </div>
-            </div>
-
-            <footer>
-                © 2026 Моё портфолио • Сделано с ❤️ и 
-                <a href="https://www.instagram.com/ваш_логин" target="_blank">вайбкодингом</a>
-            </footer>
+    <div class="container">
+        <div class="logo">natker</div>
+        <div class="headline">Создаём современные сайты и веб-сервисы</div>
+        <div class="description">Разрабатываем быстрые, удобные и эффективные решения для вашего бизнеса</div>
+        <div class="actions">
+            <a href="#" class="btn btn-primary">Обсудить проект</a>
+            <a href="#" class="btn btn-secondary">Смотреть работы →</a>
         </div>
     </div>
-
-    <script>
-        const splash = document.getElementById('splash');
-        const mainContent = document.getElementById('mainContent');
-        const splashHint = document.getElementById('splashHint');
-
-        function hideSplashAndShowContent() {
-            splash.classList.add('hidden');
-            mainContent.classList.add('visible');
-        }
-
-        // По клику на баннер или стрелку — плавно исчезает баннер и появляется контент
-        splash.addEventListener('click', hideSplashAndShowContent);
-        splashHint.addEventListener('click', hideSplashAndShowContent);
-
-        // Автоматически через 3 секунды, если пользователь не нажал
-        setTimeout(() => {
-            if (!splash.classList.contains('hidden')) {
-                hideSplashAndShowContent();
-            }
-        }, 3000);
-    </script>
 </body>
 </html>

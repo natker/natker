@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моё портфолио</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .title {
+            font-size: 18px;
+            color: #667eea;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .bio {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .skill {
+            background: #f0f0f0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .btn:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #667eea;
+            color: #667eea;
+        }
+
+        .btn-outline:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        footer {
+            margin-top: 30px;
+            color: rgba(255,255,255,0.8);
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="avatar">
+                👨‍💻
+            </div>
+            <h1>Иван Разработчик</h1>
+            <div class="title">Начинающий веб-разработчик</div>
+            <div class="bio">
+                Привет! Я создаю сайты с помощью нейросетей и вайбкодинга.
+                Здесь вы можете увидеть мои работы и связаться со мной.
+            </div>
+            <div class="skills">
+                <span class="skill">HTML/CSS</span>
+                <span class="skill">JavaScript</span>
+                <span class="skill">Вайбкодинг</span>
+                <span class="skill">GitHub Pages</span>
+            </div>
+            <div class="links">
+                <a href="#" class="btn">Мои работы</a>
+                <a href="#" class="btn btn-outline">Связаться</a>
+            </div>
+        </div>
+        <footer>
+            © 2025 Моё портфолио • Сделано с ❤️
+        </footer>
+    </div>
+</body>
+</html>

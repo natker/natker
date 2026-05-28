@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Моё портфолио</title>
+    <title>Natker | Портфолио</title>
     <style>
         * {
             margin: 0;
@@ -15,136 +15,283 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            color: #333;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
             padding: 40px 20px;
         }
 
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Карточка — сделали компактнее */
         .card {
             background: white;
             border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            text-align: center;
+            padding: 28px 32px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
+        /* Аватар — меньше */
         .avatar {
-            width: 150px;
-            height: 150px;
+            width: 100px;
+            height: 100px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 50%;
-            margin: 0 auto 20px;
+            margin: 0 auto 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 64px;
+            font-size: 48px;
             color: white;
+            overflow: hidden;
         }
 
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Заголовки — меньше */
         h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
-            color: #333;
+            font-size: 26px;
+            text-align: center;
+            margin-bottom: 8px;
+            color: #1a1a2e;
         }
 
-        .title {
-            font-size: 18px;
+        .badge {
+            text-align: center;
+            font-size: 12px;
             color: #667eea;
+            font-weight: 600;
+            letter-spacing: 1px;
             margin-bottom: 20px;
-            font-weight: 500;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 24px;
+        }
+
+        /* Сетка для двух колонок */
+        .two-columns {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .column h3 {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 8px;
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
         }
 
         .bio {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            margin-bottom: 30px;
-        }
-
-        .skill {
-            background: #f0f0f0;
-            padding: 8px 16px;
-            border-radius: 20px;
             font-size: 14px;
-            color: #555;
+            color: #444;
+            line-height: 1.5;
+            margin-bottom: 24px;
+            padding-top: 16px;
+            border-top: 1px solid #eee;
         }
 
-        .links {
+        .service-block {
+            background: #f8f9ff;
+            border-radius: 14px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+        }
+
+        .service-block h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #1a1a2e;
+        }
+
+        .service-block p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .buttons {
             display: flex;
-            gap: 15px;
-            justify-content: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
         }
 
         .btn {
             display: inline-block;
-            padding: 12px 24px;
-            background: #667eea;
-            color: white;
-            text-decoration: none;
+            padding: 10px 20px;
             border-radius: 30px;
-            transition: transform 0.2s, background 0.2s;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.2s;
         }
 
-        .btn:hover {
-            background: #5a67d8;
-            transform: translateY(-2px);
+        .btn-primary {
+            background: #1a1a2e;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #667eea;
         }
 
         .btn-outline {
-            background: transparent;
-            border: 2px solid #667eea;
-            color: #667eea;
+            border: 1.5px solid #1a1a2e;
+            color: #1a1a2e;
         }
 
         .btn-outline:hover {
-            background: #667eea;
+            background: #1a1a2e;
             color: white;
         }
 
-        footer {
-            margin-top: 30px;
-            color: rgba(255,255,255,0.8);
+        .stats {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
             text-align: center;
-            font-size: 14px;
+        }
+
+        .stat-value {
+            font-size: 13px;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: #888;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 11px;
+            color: rgba(255,255,255,0.7);
+            margin-top: 20px;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 550px) {
+            .card {
+                padding: 20px;
+            }
+            .two-columns {
+                gap: 20px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="card">
+            <!-- Аватар -->
             <div class="avatar">
-                <img src="design.png" alt="Natker">
+                👨‍💻
             </div>
+
             <h1>Natker Разработчик</h1>
-            <div class="title">Начинающий веб-разработчик</div>
+            <div class="badge">САЙТЫ, КОТОРЫЕ РАБОТАЮТ НА ВАШ УСПЕХ</div>
+            <div class="subtitle">Начинающий веб-разработчик</div>
+
+            <!-- Две колонки с характеристиками -->
+            <div class="two-columns">
+                <div class="column">
+                    <h3>Технологии</h3>
+                    <ul class="feature-list">
+                        <li>Современный дизайн</li>
+                        <li>Быстрая загрузка</li>
+                        <li>Адаптив на всех устройствах</li>
+                        <li>Продуманный функционал</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Навыки</h3>
+                    <ul class="feature-list">
+                        <li>HTML/CSS</li>
+                        <li>JavaScript</li>
+                        <li>Вайбкодинг</li>
+                        <li>GitHub Pages</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Биография -->
             <div class="bio">
-                Привет! Я создаю сайты.
-                Здесь вы можете увидеть мои работы и связаться со мной.
+                Привет! Я создаю сайты с помощью нейросетей. Здесь вы можете увидеть мои работы и связаться со мной.
             </div>
-            <div class="skills">
-                <span class="skill">HTML/CSS</span>
-                <span class="skill">JavaScript</span>
-                <span class="skill">Вайбкодинг</span>
-                <span class="skill">GitHub Pages</span>
+
+            <!-- Блок услуг -->
+            <div class="service-block">
+                <h3>Создаём современные сайты и веб-сервисы</h3>
+                <p>Разрабатываем быстрые, удобные и эффективные решения для вашего бизнеса</p>
             </div>
-            <div class="links">
-                <a href="#" class="btn">Мои работы</a>
-                <a href="#" class="btn btn-outline">Связаться</a>
+
+            <!-- Кнопки -->
+            <div class="buttons">
+                <a href="#" class="btn btn-primary">Обсудить проект</a>
+                <a href="#" class="btn btn-outline">Смотреть работы →</a>
+            </div>
+
+            <!-- Статистика -->
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value">GitHub Pages</div>
+                    <div class="stat-label">Хостинг</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">Оптимизация</div>
+                    <div class="stat-label">Производительность</div>
+                </div>
             </div>
         </div>
+
         <footer>
-            © 2026 Моё портфолио 
+            © 2026 Моё портфолио • Сделано с ❤️
         </footer>
     </div>
 </body>
